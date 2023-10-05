@@ -1,0 +1,71 @@
+
+{% extends 'plantilla.html' %}
+
+{% block body %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form class="d-flex" method="POST" action="{{ url_for('citas_por_fecha') }}">
+                <div class="input-group">
+                    <label for="inputPaciente" class="input-group-text">Filtrar por fecha de citas</label>
+                    <input type="date" class="form-control" id="fecha_filtro" name="fecha_filtro" required>
+                    <button type="submit" class="btn btn-primary"> <i class="bi bi-search"></i> </button> 
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+  
+<div style="margin-top:1cm; text-align: center;">
+    <table class="table  table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Nombre del paciente</th>
+                <th scope="col">Fecha</th>
+                {%if rolMedico==2 %}
+                    <th scope="col">Medico</th>
+                {% endif %}
+                <th scope="col">Acciones</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+          {% for cit in listCitas %}
+                <tr>
+                    <td>{{cit.0}} {{cit.1}} {{cit.2}}</td>
+                    <td> {{cit.3}} </td>
+                    {%if rolMedico==2 %}
+                    <td>{{cit.5}} {{cit.6}} {{cit.7}}</td>
+                    {% endif %}
+                    <td>
+                        <form method="POST" action="{{ url_for('generar_pdf') }}">
+                            <input type="hidden" name="exp_id" value="{{ cit.4 }}">
+                            <button type="submit">Generar PDF</button>
+                        </form>
+<!--
+                        <button class="btn btn-primary" type="submit">
+                            <a class="text-light" href="/editCitas">Editar</a>
+                        </button>
+                        <button class="btn btn-primary" type="submit">
+                            <a class="text-light"href="/eliminarCitas">Eliminar</a>
+                        </button>
+                    -->
+                        
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- Footer -->
+<footer class="footer bg-light text-white mt-5 d-flex flex-column flex-md-row  text-md-start justify-content-between py-4 px-4 px-xl-5 ">
+    <div class="container text-dark mb-3 mb-md-0" style="text-align: center;">
+    <span>© 2023 Sistema Medico.</span>
+    </div>
+</footer>
+
+  {% endblock %}

@@ -1,0 +1,46 @@
+#welcome-slide {
+  background: url(https://img.freepik.com/foto-gratis/arreglo-naturaleza-muerta-salud-plana-espacio-copia_23-2148854064.jpg?w=1060&t=st=1692048159~exp=1692048759~hmac=aefdaa24284425896363fc49836eeab460a88719c40f0b20cd8b5a5e7b66da01);
+  background-size: cover;
+  background-position: center;
+  background-color: #ffffff; 
+  padding: 0; 
+  margin: 0; 
+  width: 100vw; 
+  height: 100vh;
+}
+
+#welcome-slide #grizzly{
+  mix-blend-mode: lighten; 
+  position: absolute; 
+  bottom: 0; 
+  width: 100%; 
+  height: auto;
+  z-index: 2;
+}
+
+#welcome-slide #claim{
+  position: absolute; 
+  bottom: 60px; 
+  left: calc(50% - 100px);
+  margin: auto; 
+  z-index: 3; 
+  color: #ffffff;
+}
+
+#welcome-slide #claim h1{
+  font-size: 1.2em; 
+  text-transform: uppercase;
+  margin: 0;
+  padding: 0; 
+  font-weight: 400;
+  line-height: 0em; 
+  text-align: center;
+}
+
+#welcome-slide #claim h2{
+  font-size: 1.9em; 
+  text-transform: uppercase;
+  margin: 0;
+  padding: 0; 
+  text-align: center;
+}

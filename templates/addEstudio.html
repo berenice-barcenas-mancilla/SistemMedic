@@ -1,0 +1,42 @@
+{% extends 'plantilla.html' %}
+
+{% block body %}
+
+    <div class="wrapper" style="margin-top:2cm; margin-left:1cm; margin-right: 1cm;">
+        <div class="content">
+            <form class="row g-3" method="post" action="/guardarEstudio">
+                <div class="col-md-6">
+                    <label for="inputPaciente" class="form-label">Paciente</label>
+                    <select id="inputPaciente" class="form-select" name="txtpaciente" required>
+                        <option value="">Seleccione un paciente</option>
+                        {% for paciente in pacientes %}
+                        <option value="{{ paciente[0] }}">{{ paciente[1] }}</option>
+                        {% endfor %}
+                    </select>            
+                </div>
+                <div class="col-md-6">
+                    <label for="inputNombre" class="form-label"> Nombre del estudio medico</label>
+                    <input type="text" class="form-control" name="txtnombre" placeholder="Ingresa el nombre del medico" maxlength="40" required >
+                
+                </div>
+
+                <div class="col-md-6">
+                    <label for="exampleFormControlTextarea1" class="form-label">Descripción</label>
+                    <textarea class="form-control" name="txtdescripcion" rows="3" required></textarea>
+                </div>
+
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer bg-light text-white mt-5 d-flex flex-column flex-md-row  text-md-start justify-content-between py-4 px-4 px-xl-5 ">
+        <div class="container text-dark mb-3 mb-md-0" style="text-align: center;">
+        <span>© 2023 Sistema Medico.</span>
+        </div>
+    </footer>
+{% endblock %}

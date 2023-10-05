@@ -1,0 +1,65 @@
+{% extends 'plantilla.html' %}
+
+{% block body %}
+<div class="wrapper" style="margin-top:2cm; margin-left:1cm; margin-right: 1cm;">
+    <div class="content">  
+        <form class="row g-3" action="/deleteExploraciones/{{exploracion.0}}">
+            <div class="col-md-4">
+                <label class="form-label">Paciente:</label>
+                <select id="inputPaciente" class="form-select" name="txtpaciente"required disabled>
+                    {% for Nom in Nombres %}
+                    <option value="{{Nom.0}}">{{Nom.1}} {{Nom.2}} {{Nom.3}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <br>
+            <div class="col-md-4">
+                <label class="form-label">Fecha:</label>
+                <input type="date" name="txtFecha" placeholder="Escribe una fecha" value="{{exploracion.2}}" required disabled>
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">Peso(KG):</label>
+                <input disabled class="form-control" type="number" step="0.01" name="txtPeso" placeholder="Escribe el peso en kg" value="{{exploracion.3}}" required>
+            </div>
+
+            <div class="col-md-6">
+            <label class="form-label">Altura(M):</label>
+            <input disabled class="form-control" type="number" step="0.01" name="txtAltura" placeholder="Escribe la altura en Metros" value="{{exploracion.4}}" required>
+            </div>
+
+            <div class="col-md-6">
+            <label class="form-label">Temperatura(C°):</label>
+            <input disabled class="form-control" type="number" step="0.01" name="txtTemperatura" placeholder="Escribe la temperatura en grados centigrados" value="{{exploracion.5}}" required>
+            </div>
+
+            <div class="col-md-6">
+            <label class="form-label">Latidos(Veces por minuto):</label>
+            <input disabled class="form-control" type="number" step="0.01" name="txtLatidos" placeholder="Escribe cuantos latidos por minuto se registran" value="{{exploracion.6}}" required>
+            </div>
+
+            <div class="col-md-6">
+            <label class="form-label">Glucosa(mg/dl):</label>
+            <input disabled class="form-control" type="number" step="0.01" name="txtGlucosa" placeholder="Escribe la cantidad de glucosa" value="{{exploracion.7}}" required>
+            </div>
+
+            <div class="col-md-6">
+            <label class="form-label">Oxigeno(%):</label>
+            <input disabled class="form-control" type="number" step="0.01" name="txtOxigeno" placeholder="Escribe el porcentaje de oxigeno" value="{{exploracion.8}}" required>
+            </div>
+
+            <div class="col-12">
+            <button type="submit" class="btn btn-primary">Borrar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<footer class="footer bg-light text-white mt-5 d-flex flex-column flex-md-row  text-md-start justify-content-between py-4 px-4 px-xl-5 ">
+    <div class="container text-dark mb-3 mb-md-0" style="text-align: center;">
+        <span>© 2023 Sistema Medico.</span>
+    </div>
+</footer>
+
+
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'plantilla.html' %}
+
+{% block body %}
+
+    <div class="wrapper" style="margin-top: 2cm; margin-left: 1cm; margin-right: 1cm;">
+        <div class="content">
+            <form class="row g-3" method="post" action="/deleteDiagnostico/{{listIdDlt[0]}}">
+                
+                <div class="col-md-6">
+                    <label for="inputPaciente" class="form-label">Paciente</label>
+                    <select id="inputPaciente" class="form-select" name="txtpaciente" disabled>
+                        <option {% if listIdDlt[1] %}selected{% endif %}>{{ listIdDlt[1] }}</option>
+                    </select>
+                </div>
+
+                
+                <div class="col-md-6">
+                    <label for="inputExpediente" class="form-label">Expediente</label>
+                    <select id="inputExpediente" class="form-select" name="txtexpediente" disabled>
+                        <option {% if listIdDlt[2] %}selected{% endif %}>{{ listIdDlt[2] }}</option>
+                    </select>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="exampleFormControlTextarea1" class="form-label">Sintomas</label>
+                    <textarea class="form-control" name="txtsintomas" rows="3" disabled>{{ listIdDlt[3] }}</textarea>
+                </div>
+                <div class="col-md-6">
+                    <label for="exampleFormControlTextarea2" class="form-label">Tratamiento</label>
+                    <textarea class="form-control" name="txttratamiento" rows="3" disabled>{{ listIdDlt[4] }}</textarea>
+                </div>
+                <div class="col-md-6">
+                    <label for="exampleFormControlTextarea3" class="form-label">Medicamentos</label>
+                    <textarea class="form-control" name="txtmedicamentos" rows="3" disabled>{{ listIdDlt[5] }}</textarea>
+                </div>
+                <div class="col-md-6">
+                    <label for="exampleFormControlTextarea4" class="form-label">Indicaciones</label>
+                    <textarea class="form-control" name="txtindicaciones" rows="3" disabled>{{ listIdDlt[6] }}</textarea>
+                </div>
+
+
+                
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary" name="action" value="delete">Eliminar</button>
+                    <button type="submit" class="btn btn-primary" name="action" value="cancel">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer bg-light text-white mt-5 d-flex flex-column flex-md-row  text-md-start justify-content-between py-4 px-4 px-xl-5 ">
+        <div class="container text-dark mb-3 mb-md-0" style="text-align: center;">
+        <span>© 2023 Sistema Medico.</span>
+        </div>
+    </footer>
+{% endblock %}

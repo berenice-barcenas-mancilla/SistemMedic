@@ -1,0 +1,83 @@
+{% extends 'plantilla.html' %}
+
+{% block body %}
+    {% with mensajes = get_flashed_messages() %} 
+    {% if mensajes %} 
+        {% for msj in mensajes %}
+            <script>
+            Swal.fire({
+            text: '{{ msj }}',
+            icon: 'success',
+            confirmButtonText: 'Cool'
+            })
+            </script>
+        {% endfor %}
+    {% endif %} 
+    {% endwith %} 
+
+    <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+          <form class="d-flex" role="search" action="{{ url_for('filterPacientes') }}" method="POST">
+            <input class="form-control me-2" type="search" name="search_name" placeholder="buscar" aria-label="Search">
+            <button class="btn btn-outline-primary" type="submit"><i class="bi bi-search"></i></button>
+          </form>
+        </div>
+      </nav>
+      
+    <div style="margin-top:1cm; text-align: center;">
+        <table class="table  table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellido Paterno</th>
+                    <th scope="col">Apellido Materno</th>
+                    <th scope="col">Fecha de Nacimiento</th>
+                    <th scope="col">Alergias</th>
+                    <th scope="col">Antecedentes Familiares</th>
+                    <th scope="col">Enfermedad</th>
+                    {%if rolMedico==2 %}
+                    <th scope="col">Medico</th>
+                    {% endif %}
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pacientes in listPaciente %}
+                    <tr>
+                        <td>{{ pacientes[0] }}</td>
+                        <td>{{ pacientes[1] }}</td>
+                        <td>{{ pacientes[2] }}</td>
+                        <td>{{ pacientes[3] }}</td>
+                        <td>{{ pacientes[4] }}</td>
+                        <td>{{ pacientes[5] }}</td>
+                        <td>{{ pacientes[6] }}</td>
+                        <td>{{ pacientes[7] }}</td>
+                        {%if rolMedico==2 %}
+                        <td>{{pacientes[8]}} {{pacientes[9]}} {{pacientes[10]}}</td>
+                        {% endif %}
+
+    
+                        <td>
+                            <button class="btn btn-primary" type="submit">
+                                <a href="/editPaciente/{{ pacientes[0] }}" class="text-light">Editar</a>
+                            </button>
+                            {%if rolMedico==2 %}
+                            <button class="btn btn-primary" type="submit">
+                                <a href="/delPaciente/{{ pacientes[0] }}" class="text-light">Eliminar</a>
+                            </button>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+        
+    <!-- Footer -->
+    <footer class="footer bg-light text-white mt-5 d-flex flex-column flex-md-row  text-md-start justify-content-between py-4 px-4 px-xl-5 ">
+        <div class="container text-dark mb-3 mb-md-0" style="text-align: center;">
+        <span>© 2023 Sistema Medico.</span>
+        </div>
+    </footer>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'plantilla.html' %}
+
+{% block body %}
+
+    <div class="wrapper" style="margin-top:2cm; margin-left:1cm; margin-right: 1cm;">
+        <div class="content">
+            <form class="row g-3" method="post" action="/addmedicosguardar">
+                <div class="col-12">
+                    <label for="inputName" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" name="txtnombre" placeholder="Ingresa el nombre" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="inputAP" class="form-label">Apellido Paterno</label>
+                    <input type="text" class="form-control" name="txtap" placeholder="Ingresa el apellido paterno" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="inputAM" class="form-label">Apellido Materno</label>
+                    <input type="text" class="form-control" name="txtam" placeholder="Ingresa el apellido materno" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="inputRFC" class="form-label">RFC</label>
+                    <input type="text" class="form-control" name="txtrfc" placeholder="Ingresa el RFC del medico" maxlength="13" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="inputCedula" class="form-label"> Cedula</label>
+                    <input type="text" class="form-control" name="txtcedula" placeholder="Ingresa la cedula del medico" maxlength="18" required >
+                </div>
+                <div class="col-md-6">
+                    <label for="inputPassword" class="form-label">Password</label>
+                    <input type="password" class="form-control" name="txtpass" placeholder="Ingresa una contraseña" required>
+                </div>
+
+                <div class="col-md-2">
+                    <label for="inputRol" class="form-label">Rol</label>
+                    <select id="inputRol" class="form-select" name="txtrol" required>
+                        <option value="1">Medico</option>
+                        <option value="2">Medico Administrador</option>
+                    </select>
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer bg-light text-white mt-5 d-flex flex-column flex-md-row  text-md-start justify-content-between py-4 px-4 px-xl-5 ">
+        <div class="container text-dark mb-3 mb-md-0" style="text-align: center;">
+        <span>© 2023 Sistema Medico.</span>
+        </div>
+    </footer>
+{% endblock %}

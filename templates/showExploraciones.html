@@ -1,0 +1,73 @@
+
+{% extends 'plantilla.html' %}
+
+{% block body %}
+
+    {% with mensajes = get_flashed_messages() %} 
+    {% if mensajes %} 
+        {% for msj in mensajes %}
+            <script>
+            Swal.fire({
+            text: '{{ msj }}',
+            icon: 'success',
+            confirmButtonText: 'Cool'
+            })
+            </script>
+        {% endfor %}
+    {% endif %} 
+    {% endwith %} 
+
+    <div style="margin-top:1cm; text-align: center;">
+        <table class="table  table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre del paciente</th>
+                    <th scope="col">Edad</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Peso(KG)</th>
+                    <th scope="col">Altura(M)</th>
+                    <th scope="col">Temperatura(C°)</th>
+                    <th scope="col">Latidos(Veces por minuto)</th>
+                    <th scope="col">Glucosa(mg/dl)</th>
+                    <th scope="col">Oxigeno(%)</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for exp in listExploraciones %}
+                    <tr>
+                        <td> {{exp.0}}</td>
+                        <td>{{exp.1}} {{exp.2}} {{exp.3}}</td>
+                        <td> {{exp.4}} </td>
+                        <td> {{exp.5}} </td>
+                        <td> {{exp.6}} </td>
+                        <td> {{exp.7}} </td>
+                        <td> {{exp.8}} </td>
+                        <td> {{exp.9}} </td>
+                        <td> {{exp.10}} </td>
+                        <td> {{exp.11}} </td>
+                        <td>
+                            <button class="btn btn-primary" type="submit">
+                                <a href="/editExploraciones/{{ exp[0] }}" class="text-light">Editar</a>
+                            </button>
+                            {%if rolMedico==2 %}
+                            <button class="btn btn-primary" type="submit">
+                                <a href="/borrarExploraciones/{{ exp[0] }}" class="text-light">Eliminar</a>
+                            </button>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer bg-light text-white mt-5 d-flex flex-column flex-md-row  text-md-start justify-content-between py-4 px-4 px-xl-5 ">
+        <div class="container text-dark mb-3 mb-md-0" style="text-align: center;">
+        <span>© 2023 Sistema Medico.</span>
+        </div>
+    </footer>
+
+{% endblock %}

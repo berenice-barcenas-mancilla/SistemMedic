@@ -1,0 +1,33 @@
+{% extends 'plantilla.html' %}
+
+{% block body %}
+<div class="wrapper" style="margin-top:2cm; margin-left:1cm; margin-right: 1cm;">
+<div class="content">  
+<form class="row g-3" action="/deleteEstudio/{{estudio.0}}">
+        <div class="col-md-4">
+            <label class="form-label">Paciente:</label>
+            <select disabled id="inputPaciente" class="form-select" name="txtpaciente"required>
+                <option SELECTED value="{{estudio.4}}">{{estudio.5}} {{estudio.6}} {{estudio.7}}</option>
+                {% for Nom in Nombres %}
+                <option value="{{Nom.0}}">{{Nom.1}} {{Nom.2}} {{Nom.3}}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="col-md-4">
+            <label class="form-label">Estudio Medico:</label>
+            <input disabled class="form-control" type="text" name="txtEstudioMedico" placeholder="Escribe una fecha" value="{{estudio.2}}" required>
+        </div>
+
+        <div class="col-md-4">
+            <label class="form-label">Descripcion:</label>
+            <input disabled class="form-control" type="text" name="txtDescripcion" placeholder="Escribe una fecha" value="{{estudio.3}}" required>
+        </div>
+
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Borrar</button>
+        </div>
+    </form>
+</div>
+</div>
+{% endblock %}

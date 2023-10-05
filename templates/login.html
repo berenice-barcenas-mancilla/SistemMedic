@@ -1,0 +1,71 @@
+{% extends 'plantilla2.html' %}
+
+{% block body %}
+
+<section class="vh-100">
+  <br>
+  <br>
+  <div class="container-fluid h-custom">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-9 col-lg-6 col-xl-5">
+        <img src="https://simebal.com/wp-content/uploads/2021/03/medico-de-familia-1.png" class="img-fluid"
+          alt="Sample image">
+      </div>
+      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+        {% with mensajes = get_flashed_messages() %}
+          {% if mensajes %}
+            {% for msj in mensajes %}
+              <script>
+                Swal.fire({
+                  icon: 'warning',
+                  title: '¡OPPS.. Algo salió mal!',
+                  text: '{{ msj }}',
+                  position: 'top-end',
+                  toast: true,
+                  timer: 4000,
+                  showConfirmButton: false // No mostrar botón de confirmación
+                });
+              </script>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+     
+
+
+
+        <form method="POST" action="acceso-login">
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form3Example3">RFC</label>
+            <input type="text" id="form3Example3" class="form-control form-control-lg" placeholder="Ingresa tu RFC"
+              name="txtRfc" required />
+          </div>
+
+          <div class="form-outline mb-3">
+            <label class="form-label" for="form3Example4">Contraseña</label>
+            <input type="password" id="form3Example4" class="form-control form-control-lg"
+              placeholder="Ingresa la contraseña" name="txtPassword" required />
+          </div>
+
+          <div class="text-center text-lg-start mt-4 pt-2">
+            <button type="submit" class="btn btn-primary btn-lg"
+              style="padding-left: 2.5rem; padding-right: 2.5rem;">Entrar</button>
+
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div
+      class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
+      <div class="text-white mb-3 mb-md-0">
+        "Proyecto Medicos": Programación Orientada a Objetos S-181
+      </div>
+    </div>
+  </footer>
+</section>
+
+
+{% endblock %}

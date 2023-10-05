@@ -1,0 +1,36 @@
+{% extends 'plantilla.html' %}
+
+{% block body %}
+
+    <div class="wrapper" style="margin-top: 2cm; margin-left: 1cm; margin-right: 1cm;">
+        <div class="content">
+            <form class="row g-3" method="post" action="">
+
+                <div class="col-md-6">
+                    <label for="inputExpediente" class="form-label">Nombre del Paciente</label>
+                    <select id="inputExpediente" class="form-select" name="txtexpediente" required disabled>
+                        <option value= selected></option>
+                    </select>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="exampleFormControlTextarea1" class="form-label">Fecha</label>
+                    <input class="form-control" name="txtsintomas" rows="3" required  value=""></>
+                </div>
+                
+
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Actualizar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer bg-light text-white mt-5 d-flex flex-column flex-md-row  text-md-start justify-content-between py-4 px-4 px-xl-5 ">
+        <div class="container text-dark mb-3 mb-md-0" style="text-align: center;">
+        <span>© 2023 Sistema Medico.</span>
+        </div>
+    </footer>
+{% endblock %}

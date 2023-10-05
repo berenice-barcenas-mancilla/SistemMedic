@@ -1,0 +1,62 @@
+
+{% extends 'plantilla.html' %}
+
+{% block body %}
+
+    
+        
+    <div class="wrapper" style="margin-top:2cm; margin-left:1cm; margin-right: 1cm;">
+        <div class="content">  
+            <form class="row g-3" method="post" action="/guardarExploracion">
+                <div class="col-md-4">
+                    <label for="inputPaciente" class="form-label">Paciente</label>
+                    <select class="form-control" name="txtPaciente_id" class="form-select" required>
+                        <option selected>Ingresa un nombre</option>
+                        {% for Nom in Nombres %}
+                            <option value="{{Nom.0}}">{{Nom.1}} {{Nom.2}} {{Nom.3}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label for="inputfecha" class="form-label">Fecha de exploración:</label>
+                    <input class="form-control" type="date" name="txtFecha" placeholder="Escribe una fecha" required>
+                </div>
+                    
+                <div class="col-md-6">
+                    <label for="inputPeso" class="form-label">Peso en kilogramos:</label>
+                    <input class="form-control" type="number" step="0.01" name="txtPeso" class="form-control" placeholder="Escribe el peso en kg" required>
+                </div>
+                    
+                <div class="col-md-6">
+                    <label for="inputAltura" class="form-label">Altura en metros:</label>
+                    <input class="form-control" type="number" step="0.01" name="txtAltura" class="form-control" placeholder="Escribe la altura en Metros" required>
+                </div>
+                  
+                <div class="col-md-6">
+                    <label for="inputTemperatura" class="form-label">Temperatura corporal:</label>
+                    <input class="form-control" type="number" step="0.01" name="txtTemperatura" class="form-control" placeholder="Escribe la temperatura en grados centigrados" required>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="inputState" class="form-label">Latidos por minuto:</label>
+                    <input  class="form-control"type="number" step="0.01" name="txtLatidos" class="form-control" placeholder="Escribe cuantos latidos por minuto se registran" required>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="inputGlucosa" class="form-label">Glucosa (mg/dl):</label>
+                    <input class="form-control" type="number" step="0.01" name="txtGlucosa" class="form-control" placeholder="Escribe la cantidad de glucosa" required>
+                </div>
+                    
+                <div class="col-md-6">
+                    <label for="inputZip" class="form-label">Saturación de oxigeno:</label>
+                    <input class="form-control" type="number" step="0.01" name="txtOxigeno" class="form-control" placeholder="Escribe el porcentaje de saturacion de oxigeno" required>
+                </div>
+
+               
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
